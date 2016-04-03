@@ -13,7 +13,7 @@ Gemfile.lock
 Rakefile
 Procfile
 
-/log/.keep
+log
 .bundle
 log/*.log
 tmp/**/*
