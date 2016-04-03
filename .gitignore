@@ -1,3 +1,11 @@
+app/assets/images
+app/assets/stylesheets
+app/controllers
+app/helpers
+app/mailers
+app/models
+app/views
+
 bin
 config
 lib
