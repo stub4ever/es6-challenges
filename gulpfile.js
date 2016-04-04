@@ -10,7 +10,6 @@ var notify = require('gulp-notify');
 var swig = require('gulp-swig');
 
 var sass = require('gulp-sass');
-var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
@@ -20,20 +19,24 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback')
 
+// change roots of html
+// setup erb
+// neat
+
 
 /*
   Styles Task
 */
 
-gulp.task('styles',function() {
+gulp.task('sass',function() {
   // move over fonts
 
   gulp.src('/source/stylesheets/fonts/**.*')
     .pipe(gulp.dest('build/css/fonts'))
 
   // Compiles CSS
-  gulp.src('css/style.styl')
-    .pipe(stylus())
+  gulp.src('source/stylesheets/all.scss')  // take index.scss only
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./build/css/'))
     .pipe(reload({stream:true}))
@@ -120,8 +123,8 @@ gulp.task('scripts', function() {
 
 
 // run 'scripts' task first, then watch for future changes
-gulp.task('default', ['images','styles', 'templates', 'scripts','browser-sync'], function() {
-  gulp.watch('css/**/*', ['styles']); // gulp watch for sass changes
+gulp.task('default', ['images','sass', 'templates', 'scripts','browser-sync'], function() {
+  gulp.watch('source/stylesheets/**/*', ['sass']); // gulp watch for sass changes
   gulp.watch('*.html', ['templates']);  // gulp watch for html changes
   return buildScript('main.js', true); // browserify watch for JS changes
 });
