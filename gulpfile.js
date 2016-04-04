@@ -28,7 +28,7 @@ var historyApiFallback = require('connect-history-api-fallback')
 gulp.task('styles',function() {
   // move over fonts
 
-  gulp.src('css/fonts/**.*')
+  gulp.src('/source/stylesheets/fonts/**.*')
     .pipe(gulp.dest('build/css/fonts'))
 
   // Compiles CSS
@@ -45,7 +45,7 @@ gulp.task('templates', function() {
     .pipe(swig({
       defaults: { cache: false }
     }))
-    .pipe(gulp.dest('./build/pages/'))
+    .pipe(gulp.dest('./build/'))
     .pipe(reload({stream: true}));
 });
 
@@ -121,7 +121,7 @@ gulp.task('scripts', function() {
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['images','styles', 'templates', 'scripts','browser-sync'], function() {
-  gulp.watch('css/**/*', ['styles']); // gulp watch for stylus changes
+  gulp.watch('css/**/*', ['styles']); // gulp watch for sass changes
   gulp.watch('*.html', ['templates']);  // gulp watch for html changes
   return buildScript('main.js', true); // browserify watch for JS changes
 });
