@@ -41,7 +41,7 @@ gulp.task('styles',function() {
 
 // Compiles html
 gulp.task('templates', function() {
-  return gulp.src('/*.html')
+  return gulp.src('*.html')
     .pipe(swig({
       defaults: { cache: false }
     }))
@@ -53,8 +53,8 @@ gulp.task('templates', function() {
   Images
 */
 gulp.task('images',function(){
-  gulp.src('css/images/**')
-    .pipe(gulp.dest('./build/css/images'))
+  gulp.src('source/images/**')
+    .pipe(gulp.dest('./build/images'))
 });
 
 /*
@@ -80,7 +80,7 @@ function handleErrors() {
 
 function buildScript(file, watch) {
   var props = {
-    entries: ['./scripts/' + file],
+    entries: ['./source/javascripts/' + file],
     debug : true,
     cache: {},
     packageCache: {},
@@ -95,7 +95,7 @@ function buildScript(file, watch) {
     return stream
       .on('error', handleErrors)
       .pipe(source(file))
-      .pipe(gulp.dest('./build/'))
+      .pipe(gulp.dest('./build/javascripts/'))
       // If you also want to uglify it
       // .pipe(buffer())
       // .pipe(uglify())
