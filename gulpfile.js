@@ -9,6 +9,7 @@ var watchify = require('watchify');
 var notify = require('gulp-notify');
 var swig = require('gulp-swig');
 
+
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
@@ -19,11 +20,17 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback')
 
-// change roots of html
-// setup erb / ruby / yaml
 // minify css + js > what is uglify?
 // neat -> bourbon
 // check notify?
+
+gulp.task('index', function () {
+  var target = gulp.src('./source/index.html');
+  // It's not necessary to read the files (will speed up things), we're only after their paths:
+
+  return target.pipe(inject(sources))
+    .pipe(gulp.dest('/source'));
+});
 
 
 /*
