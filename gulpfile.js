@@ -20,8 +20,10 @@ var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback')
 
 // change roots of html
-// setup erb
-// neat
+// setup erb / ruby / yaml
+// minify css + js > what is uglify?
+// neat -> bourbon
+// check notify?
 
 
 /*
@@ -32,13 +34,13 @@ gulp.task('sass',function() {
   // move over fonts
 
   gulp.src('/source/stylesheets/fonts/**.*')
-    .pipe(gulp.dest('build/css/fonts'))
+    .pipe(gulp.dest('dist/css/fonts'))
 
   // Compiles CSS
   gulp.src('source/stylesheets/all.scss')  // take index.scss only
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./build/css/'))
+    .pipe(gulp.dest('./dist/css/'))
     .pipe(reload({stream:true}))
 });
 
@@ -48,7 +50,7 @@ gulp.task('templates', function() {
     .pipe(swig({
       defaults: { cache: false }
     }))
-    .pipe(gulp.dest('./build/'))
+    .pipe(gulp.dest('./dist/'))
     .pipe(reload({stream: true}));
 });
 
@@ -57,7 +59,7 @@ gulp.task('templates', function() {
 */
 gulp.task('images',function(){
   gulp.src('source/images/**')
-    .pipe(gulp.dest('./build/images'))
+    .pipe(gulp.dest('./dist/images'))
 });
 
 /*
@@ -98,12 +100,12 @@ function buildScript(file, watch) {
     return stream
       .on('error', handleErrors)
       .pipe(source(file))
-      .pipe(gulp.dest('./build/javascripts/'))
+      .pipe(gulp.dest('./dist/javascripts/'))
       // If you also want to uglify it
       // .pipe(buffer())
       // .pipe(uglify())
       // .pipe(rename('app.min.js'))
-      // .pipe(gulp.dest('./build'))
+      // .pipe(gulp.dest('./dist/javascripts/'))
       .pipe(reload({stream:true}))
   }
 
