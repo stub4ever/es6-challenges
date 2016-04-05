@@ -45,4 +45,4 @@ log
 out/
 # dist/
 
-tmp/cache/assets/sprockets/v3.0
+tmp/
