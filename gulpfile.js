@@ -20,15 +20,6 @@ var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback')
 
 
-gulp.task('index', function () {
-  var target = gulp.src('./source/index.html');
-  // It's not necessary to read the files (will speed up things), we're only after their paths:
-
-  return target.pipe(inject(sources))
-    .pipe(gulp.dest('/source'));
-});
-
-
 /*
   Styles Task
 */
