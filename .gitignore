@@ -43,4 +43,6 @@ log
 
 # Ignore files that are generated in the build.
 out/
-dist/
+# dist/
+
+tmp/cache/assets/sprockets/v3.0
