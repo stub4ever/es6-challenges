@@ -9,7 +9,6 @@ var watchify = require('watchify');
 var notify = require('gulp-notify');
 var swig = require('gulp-swig');
 
-
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
@@ -20,9 +19,6 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback')
 
-// minify css + js > what is uglify?
-// neat -> bourbon
-// check notify?
 
 gulp.task('index', function () {
   var target = gulp.src('./source/index.html');
